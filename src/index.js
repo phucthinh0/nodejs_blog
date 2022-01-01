@@ -7,6 +7,8 @@ const port = 3000;
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ extname: '.hbs' })
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 //HTTP logger
 app.use(morgan('combined'));
 
