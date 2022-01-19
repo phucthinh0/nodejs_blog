@@ -3,12 +3,14 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const port = 3000;
-
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ extname: '.hbs' })
+const hbs = exphbs.create({ extname: '.hbs' });
 
-app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 //HTTP logger
 //app.use(morgan('combined'));
 
@@ -23,7 +25,7 @@ app.get('/', (req, res) =>  {
 });
 
 app.get('/new', (req, res) =>  {
-    console.log(req.query.q)
+    console.log(req.query.q);
     res.render('new'); 
 });
 
@@ -31,6 +33,8 @@ app.get('/search', (req, res) =>  {
     res.render('search');
 });
 
-
+app.post('/search', (req, res) =>  {
+    res.send('');
+});
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
