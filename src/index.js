@@ -7,6 +7,10 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ extname: '.hbs' });
 
 const route = require('./routes');
+const db = require(./config/db);
+
+//Connect to db
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({
