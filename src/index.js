@@ -7,7 +7,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ extname: '.hbs' });
 
 const route = require('./routes');
-const db = require(./config/db);
+const db = require('./config/db');
 
 //Connect to db
 db.connect();
